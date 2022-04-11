@@ -1,6 +1,7 @@
 package ArrayList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,13 +31,18 @@ public class Sorular {
     9) isEmpty() methodu kullanarak, list’deki tum elemanlarin silindigini dogrulayiniz
 */
     public static void main(String[] args) {
+        //1. Yontem
         List<String> harfler= new ArrayList<>();
         harfler.add("A");
         harfler.add("C");
         harfler.add("E");
         harfler.add("F");
-
         System.out.println(harfler);//[A, C, E, F]
+
+        //2. Yontem
+        //List<String> harfler= new ArrayList<>(Arrays.asList("A","C","E","F"));
+        //3. Yontem
+        //List<String> harfler= new ArrayList<>(List.of("A","C","E","F"));
 
         harfler.add("B");
         System.out.println(harfler);//[A, C, E, F, B]
