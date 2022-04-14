@@ -14,7 +14,7 @@ public class Sorular {
        ArrayList’i ekrana yazdiriniz, list boyle olmali; A, L, C, E, F, B.
 
     3) set() methodu kullanarak, E’yi D yapiniz.
-       ArrayList’i ekrana yazdiriniz, list boyle olmali; A, L, C, D, F, B.
+       ArrayList’i ekrana yazdiriniz, list boyle olmali; A, L,C, D, F, B .
 
     4) remove() methodu kullanarak, F’yi siliniz.
        ArrayList’i ekrana yazdiriniz, list boyle olmali; A, L, C, D, B.

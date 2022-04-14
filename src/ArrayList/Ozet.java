@@ -67,9 +67,5 @@ public class Ozet {
 
     2.yontem : Object arr[ ] = list.toArray( );
 
-
-
-
-
  */
 }

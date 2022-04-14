@@ -17,9 +17,8 @@ Kitap kitap1 = new Kitap("Suç ve Ceza","Fyodor Dostoyevski","1866","20$");
 Kitap kitap2 = new Kitap("Savaş ve Barış ","Lev Tolstoy","1867","15$");
 Kitap kitap3 = new Kitap("Sefiller","Victor Hugo","1862","17$");
 
------------------------------------------------------------------------
 Müşteri Paneli
-
+-----------------------------------------------------------------------
 1.Çiğdem Aynagöz -> Gerekli Class'ları oluşturacak
 2.Suna Erkan     -> Encapsulation ve Inheritance ilişkilerini kuracak
 3.Melih Cevher   -> Data olusturacak, müşteri 1, müşteri 2 gibi (Constr. üzerinden)
