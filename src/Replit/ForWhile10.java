@@ -10,10 +10,9 @@ Sayilarin Toplami : 5050
 */
     public static void main(String[] args) {
         int toplam=0;
-        int sayi=1;
-        while (sayi>0){
-            System.out.println("Sayilar toplami: "+toplam);
-            toplam++;
+        for (int i = 1; i <=100 ; i++) {
+            toplam+=i;
         }
+        System.out.println("Sayilarin toplami: "+toplam);
     }
 }
