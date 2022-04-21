@@ -1,9 +1,14 @@
 package HalukHocaProje.AracKiralama;
 
-import static HalukHocaProje.AracKiralama.MusteriVeArabaBilgisi.aracTalep;
+import static HalukHocaProje.AracKiralama.MusteriVeArabaBilgisi.*;
 
 public class Runner {
     public static void main(String[] args) {
-        aracTalep();
+        //aracTalep();
+        arabalar();
+        musteriBilgisi();
+        odemeBilgileri();
     }
+
+
 }
