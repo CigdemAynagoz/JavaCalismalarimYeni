@@ -1,12 +1,7 @@
 package HalukHocaProje.AracKiralama;
 
 public class AracTalep {
-    private String model;
-    private String marka;
-    private String yakitTuru;
-    private String vites;
-    private int gunlukKira;
-
+    public AracTalep(){}
 
     private String alinacakSehir;
     private String alinacakGun;
@@ -14,20 +9,11 @@ public class AracTalep {
     private double alisSaati;
     private double teslimSaati;
 
-    public AracTalep(){
-
-    }
-
-    @Override
-    public String toString() {
-        return "AracTalep{" +
-                "alinacakSehir='" + alinacakSehir + '\'' +
-                ", alinacakGun='" + alinacakGun + '\'' +
-                ", teslimGunu='" + teslimGunu + '\'' +
-                ", alisSaati=" + alisSaati +
-                ", teslimSaati=" + teslimSaati +
-                '}';
-    }
+    private String model;
+    private String marka;
+    private String yakitTuru;
+    private String vites;
+    private int gunlukKira;
 
     public AracTalep(String alinacakSehir, String alinacakGun, String teslimGunu, double alisSaati, double teslimSaati) {
 
@@ -36,6 +22,24 @@ public class AracTalep {
         this.teslimGunu = teslimGunu;
         this.alisSaati = alisSaati;
         this.teslimSaati = teslimSaati;
+    }
+    public AracTalep(String marka,String model, String yakitTuru, String vites, int gunlukKira) {
+        this.model=model;
+        this.marka = marka;
+        this.yakitTuru = yakitTuru;
+        this.vites = vites;
+        this.gunlukKira = gunlukKira;
+    }
+
+    @Override
+    public String toString() {
+        return "AracTalep{" +
+                "model='" + model + '\'' +
+                ", marka='" + marka + '\'' +
+                ", yakitTuru='" + yakitTuru + '\'' +
+                ", vites='" + vites + '\'' +
+                ", gunlukKira=" + gunlukKira +
+                '}';
     }
 
     public String getAlinacakSehir() {
@@ -46,10 +50,7 @@ public class AracTalep {
         this.alinacakSehir = alinacakSehir;
     }
 
-    public String getAlinacakGun() {
-
-        return alinacakGun;
-    }
+    public String getAlinacakGun() {return alinacakGun;}
 
     public void setAlinacakGun(String alinacakGun) {
         this.alinacakGun = alinacakGun;
@@ -80,13 +81,7 @@ public class AracTalep {
     }
 
 
-    public AracTalep(String marka, String yakitTuru, String vites, int gunlukKira) {
 
-        this.marka = marka;
-        this.yakitTuru = yakitTuru;
-        this.vites = vites;
-        this.gunlukKira = gunlukKira;
-    }
 
     public String getModel() {
         return model;

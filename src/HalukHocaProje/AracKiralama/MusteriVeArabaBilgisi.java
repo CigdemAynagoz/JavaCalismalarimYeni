@@ -10,7 +10,18 @@ public class MusteriVeArabaBilgisi extends AracTalep {
     static Scanner scan=new Scanner(System.in);
     static int toplamGun;
 
-    static List<AracTalep> talepEdilenArac= new ArrayList<>();
+    static List<AracTalep> talepEdilenAracListesi = new ArrayList<>();
+    public static void girisPaneli() {
+        System.out.println("***JAVA RENT a CAR'a HOSGELDİNİZ***");
+        System.out.println("Arac kiralamak icin 1'i \nCıkıs yapmak icin 2'yi tuslayiniz ");
+        int secim = scan.nextInt();
+        switch (secim) {
+            case 1:aracTalep();break;
+            case 2:cıkısArac();break;
+            default:
+                System.out.println("Yanlis tusladiniz.Tekrar deneyiniz");
+        }
+    }
 
     public static  void aracTalep() {
         System.out.println(" lutfen teslim alacaginiz gunu giriniz ");
@@ -51,73 +62,47 @@ public class MusteriVeArabaBilgisi extends AracTalep {
         }
        toplamGun=(tAyi-aAyi)*30+(tGunu-aGunu);
         System.out.println("odenecek gun sayisi "+toplamGun);
+        arabalar();
 
     }
-    public static void islemMenusu() {
+    protected  static void getAraba(String marka,String yakitTuru, String vites,int gunlukKira) {
+        talepEdilenAracListesi.stream().
+                filter(t-> t.getMarka().equalsIgnoreCase(marka) &&
+                        t.getYakitTuru().equalsIgnoreCase(yakitTuru)&& t.getVites().equalsIgnoreCase(vites)).
+                forEach(System.out::println);
+
+    }
+    protected static void islemMenusu() {
         System.out.println("Devam etmek istiyorsanız e, istemiyorsaniz h ye basiniz. Cıkıs yapmak icin Q ya basınız");
         String devam=scan.next();
-        if (devam=="e"){
-            musteriBilgisi();
-        }else if (devam=="h"){
-         arabalar();
-        }else if (devam=="q"){
-            cıkısArac();
+        switch (devam) {
+            case "e": musteriBilgisi();break;
+            case "h": arabalar();break;
+            case "q": cıkısArac();break;
+            default:
+                System.out.println("Yanlıs secim yaptınız tekrar deneyiniz");
+                islemMenusu();break;
+
         }
     }
 
-    static void musteriBilgisi() {
-        System.out.println("Ödeme sayfasına hosgeldiniz.İslemleriniz devam ediyor");
-        System.out.println("Lutfen ad-soyad giriniz");
-        String adSoyad=scan.nextLine();
-        scan.nextLine();
-        System.out.println("Telefon numaranızı giriniz");
-        String tel=scan.next();
+    protected static  void arabalar(){
+        AracTalep hondaBOtomatik= new AracTalep("honda","civic"," benzin","otomatik",400);
+        AracTalep toyotaDOtomatik= new AracTalep("toyota","yaris"," dizel","otomatik",500);
+        AracTalep opelLManuel= new AracTalep("opel","astra"," LPG"," manuel",300);
+        AracTalep volvoBOtomatik= new AracTalep("volvo","s40"," benzin","otomatik",700);
+        talepEdilenAracListesi.add(hondaBOtomatik);
+        talepEdilenAracListesi.add(toyotaDOtomatik);
+        talepEdilenAracListesi.add(opelLManuel);
+        talepEdilenAracListesi.add(volvoBOtomatik);
 
-        System.out.println("Lutfen yasınızı giriniz");
-        int yas=scan.nextInt();
-        odemeBilgileri();
-    }
-
-    static void odemeBilgileri(){
-        System.out.println("Lütfwn kart numaraınızı giriniz");
-        String kartNo=scan.nextLine();
-        scan.nextLine();
-        String kartNoSu="123456789";
-        if((kartNoSu==kartNo)){
-            System.out.println("gecerli kart no");
-        }else {
-
-            System.out.println("gecersiz kart numarası");
-            odemeBilgileri();
-            scan.next();
-        }
-        System.out.println("odemeniz barasılıyla gerceklesmistir");
-    }
-
-
-    private static void cıkısArac() {
-        System.out.println("***Cıkısınız yapılmıstır.***\n***Bizi tercih ettiginiz icin tesekkur ederiz***");
-
-    }
-
-
-    public static  void arabalar(){
-        AracTalep hondaBOtomatik= new AracTalep("honda"," benzin","otomatik",400);
-        AracTalep toyotaDOtomatik= new AracTalep("toyota"," dizel","otomatik",500);
-        AracTalep opelLManuel= new AracTalep("opel"," LPG"," manuel",300);
-        AracTalep volvoBOtomatik= new AracTalep("volvo"," benzin","otomatik",700);
-        talepEdilenArac.add(hondaBOtomatik);
-        talepEdilenArac.add(toyotaDOtomatik);
-        talepEdilenArac.add(opelLManuel);
-        talepEdilenArac.add(volvoBOtomatik);
-
-        System.out.println(talepEdilenArac);
+        System.out.println(talepEdilenAracListesi);
         System.out.println("Talep ettidiginiz arabanın numarasını giriniz.\n1:hondaBOtomatik \n2:toyotaDOtomatik \n3:opelLManuel \n4:volvoBOtomatik");
         int tercih=scan.nextInt();
         switch(tercih){
             case 1:
-               getAraba("honda","benzin","otomatik",400);
-               int ucretH=toplamGun*400;
+                getAraba("honda","benzin","otomatik",400);
+                int ucretH=toplamGun*400;
                 System.out.println("odeyeceginiz miktar: "+ucretH);
                 islemMenusu();
                 break;
@@ -139,20 +124,52 @@ public class MusteriVeArabaBilgisi extends AracTalep {
                 System.out.println("odeyeceginiz miktar: "+ucretV);
                 islemMenusu();
                 break;
+            default:
+                System.out.println("Lütfen gecerli bir islem giriniz");
 
         }
     }
 
-    public  static void getAraba(String marka,String yakitTuru, String vites,int gunlukKira) {
-        talepEdilenArac.stream().
-                filter(t-> t.getMarka().equalsIgnoreCase(marka) &&
-                        t.getYakitTuru().equalsIgnoreCase(yakitTuru)&& t.getVites().equalsIgnoreCase(vites)).
-                forEach(System.out::println);
+    protected static void musteriBilgisi() {
+        System.out.println("Ödeme sayfasına hosgeldiniz.İslemleriniz devam ediyor");
+        System.out.println("Lutfen ad-soyad giriniz");
+        scan.nextLine();
+        String adSoyad=scan.nextLine();
+
+        System.out.println("Telefon numaranızı giriniz");
+        String tel=scan.next();
+        System.out.println("Lutfen yasınızı giriniz");
+        int yas=scan.nextInt();
+        if(yas<18||yas>120){
+            System.out.println("Uzgunuz, arac kiralayamazsiniz 18 yasından büyük olmaniz gerekir...");
+            musteriBilgisi();
+        }
+        System.out.println("**********************");
+        System.out.println("Ad soyad: "+adSoyad+"\nTelefon: "+tel+"\nYas: "+yas);
+        odemeBilgileri();
+    }
+
+    protected static void odemeBilgileri() {
+        System.out.println("Lütfen kart numaranızı giriniz");
+        String kartNo = scan.nextLine();
+        scan.next();
+        int uzunluk=12;
+
+        if (uzunluk>kartNo.length()&&(uzunluk<kartNo.length())){
+            System.out.println("Gecersiz kart numarasi");
+            odemeBilgileri();
+            scan.nextLine();
+        }else{
+            System.out.println("Odemeniz Basari ile Gerceklesmistir. Iyi gunler dileriz...");
+
+        }
+        islemMenusu();
+    }
+
+
+    static void cıkısArac() {
+        System.out.println("***Cıkısınız yapılmıstır.***\n***Bizi tercih ettiginiz icin tesekkur ederiz***");
 
     }
 
-    public static void kiralamaBedeli(){
-
-
-    }
 }
