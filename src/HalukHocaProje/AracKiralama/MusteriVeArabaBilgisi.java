@@ -20,19 +20,21 @@ public class MusteriVeArabaBilgisi extends AracTalep {
             case 2:cıkısArac();break;
             default:
                 System.out.println("Yanlis tusladiniz.Tekrar deneyiniz");
+                girisPaneli();
+
         }
     }
 
     public static  void aracTalep() {
-        System.out.println(" lutfen teslim alacaginiz gunu giriniz ");
-        String alinacakGun = scan.next().toUpperCase();
         System.out.println("lutfen aracin alinacagi sehri yaziniz ");
         String alinacakSehir = scan.next().toUpperCase();
-        System.out.println(" lutfen teslim gununu giriniz ");
-        String teslimGunu = scan.next().toUpperCase();
-        System.out.println(" lutfen alacaginiz saati giriniz ");
+        System.out.println(" lutfen araci alacaginiz gunu giriniz ");
+        String alinacakGun = scan.next().toUpperCase();
+        System.out.println(" lutfen araci alacaginiz saati giriniz ");
         double alisSaati = scan.nextDouble();
-        System.out.println(" lutfen teslim saatini giriniz ");
+        System.out.println(" lutfen araci teslim edeceginiz gununu giriniz ");
+        String teslimGunu = scan.next().toUpperCase();
+        System.out.println(" lutfen araci teslim edeceginiz saatini giriniz ");
         double teslimSaati = scan.nextDouble();
 
         String aGun=alinacakGun.substring(0,2);  // gun  sayisi almak icin
@@ -44,7 +46,7 @@ public class MusteriVeArabaBilgisi extends AracTalep {
 
         String tGun=teslimGunu.substring(0,2);
         int tGunu=Integer.parseInt(tGun);
-        String tAy=alinacakGun.substring(3);
+        String tAy=teslimGunu.substring(3);
         int tAyi=Integer.parseInt(tAy);
 
         System.out.println(" teslim tarihi "+ tGunu+"."+ tAyi);
@@ -53,12 +55,16 @@ public class MusteriVeArabaBilgisi extends AracTalep {
             System.out.println(" alis tarihi teslim tarihinden fazla olmaz ");
             aracTalep();
 
-        }else if(aGunu > tGunu){
+        }else if(aGunu > tGunu) {
             System.out.println(" alis gunu teslim gununden sonra olmaz ");
             aracTalep();
 
-        }else{
+        }else {
+            System.out.println("_______________________________________________________________________");
+            System.out.println("alınacak gun :" + alinacakGun + "\nalınacak sehır: " + alinacakSehir + "\nteslim gunu: " + teslimGunu
+                    + "\nalınacak saat:" + alisSaati + "\nteslım saatı:" + teslimSaati);
 
+            System.out.println("_______________________________________________________________________");
         }
        toplamGun=(tAyi-aAyi)*30+(tGunu-aGunu);
         System.out.println("odenecek gun sayisi "+toplamGun);
@@ -126,7 +132,7 @@ public class MusteriVeArabaBilgisi extends AracTalep {
                 break;
             default:
                 System.out.println("Lütfen gecerli bir islem giriniz");
-
+                arabalar();
         }
     }
 
@@ -136,11 +142,16 @@ public class MusteriVeArabaBilgisi extends AracTalep {
         scan.nextLine();
         String adSoyad=scan.nextLine();
 
-        System.out.println("Telefon numaranızı giriniz");
+        System.out.println("Telefon numaranızı basinda 0 olmadan  giriniz");
         String tel=scan.next();
+        if(tel.length()==10){
+        }else{
+            System.out.println("Yanlis girdiniz tekrar deneyiniz");
+            musteriBilgisi();
+        }
         System.out.println("Lutfen yasınızı giriniz");
         int yas=scan.nextInt();
-        if(yas<18||yas>120){
+        if(yas<18){
             System.out.println("Uzgunuz, arac kiralayamazsiniz 18 yasından büyük olmaniz gerekir...");
             musteriBilgisi();
         }
@@ -150,20 +161,19 @@ public class MusteriVeArabaBilgisi extends AracTalep {
     }
 
     protected static void odemeBilgileri() {
+        Scanner scan = new Scanner(System.in);
         System.out.println("Lütfen kart numaranızı giriniz");
         String kartNo = scan.nextLine();
-        scan.next();
-        int uzunluk=12;
 
-        if (uzunluk>kartNo.length()&&(uzunluk<kartNo.length())){
-            System.out.println("Gecersiz kart numarasi");
+        int uzunluk=12;
+        if (uzunluk>kartNo.length()||(uzunluk<kartNo.length())){
+            System.out.println("Gecersiz kart numarası.tekrar deneyiniz");
             odemeBilgileri();
-            scan.nextLine();
         }else{
             System.out.println("Odemeniz Basari ile Gerceklesmistir. Iyi gunler dileriz...");
-
+            cıkısArac();
         }
-        islemMenusu();
+
     }
 
 
