@@ -35,6 +35,7 @@ Output: a s
         System.out.println("Sonuc: "+istenen);
 
 
-    }}
+    }
+}
 
 
