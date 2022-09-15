@@ -1,6 +1,5 @@
 package Set;
 
-import java.util.HashMap;
 
 public class interview {
     //5 tane ulke ismi ve nufusunu oluşturuyoruz.(put)
@@ -11,7 +10,7 @@ public class interview {
     //kaç tane 50 milyondan fazla nüfuslu ülke var?
     // ulke ve nufus  lari hem map gibi..hem de ayri ayri yazdirma ?
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         HashMap<String,Integer> ulke = new HashMap<>();
         ulke.put("Almanya", 80);
         ulke.put("Turkiye", 83);
@@ -32,5 +31,5 @@ public class interview {
 
         System.out.println("ülkelerin nufuslari toplamı :" + ulke.values().stream().reduce(0,(x,y)->x+y));
 
-    }
+    }*/
 }
